@@ -9,13 +9,16 @@ import {
   View
 } from 'react-native';
 
-export default class SecondView extends Component {
+export default class FirstView extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-
+      username: '',
+      password: ''
     }
+
+    this.handleSubmitPress = this.handleSubmitPress.bind(this); // Makes submit work
   }
 
   handleSubmitPress() {
@@ -23,20 +26,37 @@ export default class SecondView extends Component {
       username: '',
       password: ''
     });
+
+    this.props.router.toSecondView();
   }
+
 
   render() {
     return (
       <View style={styles.container}>
 
-        <Text>Second View :)</Text>
+        {/* Add logo image */}
+        <Image
+          source={require('../img/starwars.png')}
+          resizeMode="contain"
+          style={styles.logo}
+         />
 
+        {/* Submit */}
+        <TouchableOpacity
+          onPress={this.handleSubmitPress}
+        >
+          <Text style={[styles.submitButton, styles.buttonText]}>Get Started</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  logo: {
+    width: '80%',
+  },
   input: {
     borderColor: 'gray',
     borderWidth: 1,
@@ -49,19 +69,20 @@ const styles = StyleSheet.create({
     width: '80%'
   },
   submitButton: {
-    borderColor: '#7FB53A',
+    borderColor: '#EBC75E',
     borderWidth: 1,
+    borderRadius: 4,
     padding: 10,
     width: '50%',
     textAlign: 'center',
   },
   buttonText: {
-    color: '#7FB53A',
+    color: '#EBC75E',
   },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#373028',
+    backgroundColor: '#0E0E0E',
   },
 });

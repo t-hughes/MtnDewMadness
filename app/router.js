@@ -1,4 +1,7 @@
-import SecondView from '~/components/SecondView';
+import SecondView from '~/containers/SecondView';
+import FilmsView from '~/containers/FilmsView';
+import PeopleView from '~/containers/PeopleView';
+import SpaceshipsView from '~/containers/SpaceshipsView';
 
 export default class MainRouter {
   constructor(navigator) {
@@ -24,6 +27,30 @@ export default class MainRouter {
     this.push(props, {
       title: 'Second View',
       component: SecondView,
+      transition: 'FloatFromRight'
+    })
+  }
+
+  toFilmsView(props) {
+    this.push(props, {
+      title: 'Films View',
+      component: FilmsView,
+      transition: 'FloatFromRight'
+    })
+  }
+
+  toPeopleView(props) {
+    this.push(props, {
+      title: 'People View',
+      component: PeopleView,
+      transition: 'FloatFromRight'
+    })
+  }
+
+  toSpaceshipsView(props) {
+    this.push(props, {
+      title: 'Spaceships View',
+      component: SpaceshipsView,
       transition: 'FloatFromRight'
     })
   }

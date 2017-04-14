@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainRouter from '~/router';
-import FirstView from '~/components/FirstView'
+import FirstView from '~/containers/FirstView';
 import {
   Navigator,
   BackAndroid

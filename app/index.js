@@ -1,14 +1,25 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
+import React, { Component } from 'react'
+import { Provider } from 'react-redux'
+import configureStore from './store'
 import AppNavigator from '~/AppNavigator';
 
 export default class MtnDewMadness extends Component {
+  constructor() {
+    super();
+    console.disableYellowBox = true;
+    this.state = {
+      isLoading: true,
+      store: configureStore(() => this.setState({isLoading: false})),
+    };
+  }
   render() {
-    return (<AppNavigator />);
+    if (this.state.isLoading) {
+      return null;
+    }
+    return (
+      <Provider store={this.state.store}>
+        <AppNavigator />
+      </Provider>
+    );
   }
 }
